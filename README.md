@@ -1,35 +1,33 @@
-## About
+## Getting Started
 
-This project was created with [express-generator-typescript](https://github.com/seanpmaxwell/express-generator-typescript).
+First, install the dependencies:
 
+```bash
+npm install
+```
 
-## Available Scripts
+Now create a folder called "env" and add the development.env file:
 
-### `npm run dev` or `npm run dev:hot` (hot reloading)
+```bash
+NODE_ENV=development
 
-Run the server in development mode.
+PORT=8000
+HOST=localhost
 
-### `npm test` or `npm run test:hot` (hot reloading)
+ORIGIN=http://localhost:3000
 
-Run all unit-tests.
+COOKIE_DOMAIN=localhost
+COOKIE_PATH=/
+SECURE_COOKIE=false
+JWT_SECRET=xxxxxxxxxxxxxx
+COOKIE_SECRET=xxxxxxxxxxxxxx
+COOKIE_EXP=259200000
+```
 
-### `npm test -- "name of test file" (i.e. users).`
+Then, run the project with:
 
-Run a single unit-test.
+```bash
+npm run dev
+```
 
-### `npm run lint`
-
-Check for linting errors.
-
-### `npm run build`
-
-Build the project for production.
-
-### `npm start`
-
-Run the production build (Must be built first).
-
-
-## Additional Notes
-
-- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`. 
+The server will run at [http://localhost:8000](http://localhost:8000).
