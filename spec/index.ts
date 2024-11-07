@@ -1,8 +1,7 @@
-import find from 'find';
-import Jasmine from 'jasmine';
-import logger from 'jet-logger';
-import { argv } from 'process';
-
+import find from "find";
+import Jasmine from "jasmine";
+import logger from "jet-logger";
+import { argv } from "process";
 
 // Init Jasmine
 const jasmine = new Jasmine();
@@ -11,22 +10,20 @@ jasmine.exitOnCompletion = false;
 // Set location of test files
 jasmine.loadConfig({
   random: true,
-  spec_dir: 'spec',
-  spec_files: [
-    './tests/**/*.spec.ts',
-  ],
+  spec_dir: "spec",
+  spec_files: ["./tests/**/*.spec.ts"],
   stopSpecOnExpectationFailure: false,
 });
 
 // Run all or a single unit-test
 let execResp: Promise<jasmine.JasmineDoneInfo> | undefined;
-if (!!argv[2]) {
+if (argv[2]) {
   const testFile = argv[2];
-  find.file(testFile + '.spec.ts', './spec', (files: string[]) => {
+  find.file(testFile + ".spec.ts", "./spec", (files: string[]) => {
     if (files.length === 1) {
       jasmine.execute([files[0]]);
     } else {
-      logger.err('Test file not found!');
+      logger.err("Test file not found!");
     }
   });
 } else {
@@ -35,12 +32,12 @@ if (!!argv[2]) {
 
 // Wait for tests to finish
 (async () => {
-  if (!!execResp) {
+  if (execResp) {
     const info = await execResp;
-    if (info.overallStatus === 'passed') {
-      logger.info('All tests have passed :)');
+    if (info.overallStatus === "passed") {
+      logger.info("All tests have passed :)");
     } else {
-      logger.err('At least one test has failed :(');
+      logger.err("At least one test has failed :(");
     }
   }
 })();

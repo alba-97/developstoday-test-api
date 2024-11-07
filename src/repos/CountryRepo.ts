@@ -1,5 +1,4 @@
 import axios from "axios";
-import orm from "./MockOrm";
 import { ICountry } from "@src/models/Country";
 
 async function getAll(): Promise<ICountry[]> {
